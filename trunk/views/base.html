@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" 
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html lang="en"> 
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+	<title>{% block headtitle %}{% endblock %}</title> 
+	<meta name="description" content="EasyAppEngine"> 
+
+<link rel="stylesheet" type="text/css" href="/css/common.css"> 
+
+
+</head>
+
+<body>
+	<div id="wrap">
+        <div id="header">
+            <div style="float:left;width:50px;">{% block backbutton %}{% endblock %}</div>
+            <div style="margin:0 50px;0 50px">{% block title %}{% endblock %}</div>
+            <div style="float:right;width:50px;">{% block nextbutton %}{% endblock %}</div>
+        </div>
+    
+        {% block content %}{% endblock %}
+
+        <div id="footer">
+		  <img src="http://code.google.com/appengine/images/appengine-noborder-120x30.gif" 
+				alt="Powered by Google App Engine" />
+		</div>
+
+    </div>
+   
+</body>
+</html>

@@ -1,0 +1,128 @@
+
+* {margin: 0; padding: 0;}
+
+body {
+		color:#000;
+		background:#fff;
+        font-family: tahoma, arial, helvetica;
+        font-size: 10pt;
+}
+
+
+#wrap {
+    margin:0 auto;
+    background:#fff;
+    width: 480pt;
+}
+
+@media screen and (max-width: 480pt) {
+    #wrap {
+        width: auto;
+    }
+}
+
+
+#header {
+    font-size: 30pt;
+    text-align: center;
+    vertical-align: middle;
+    padding: .2em;
+	background: rgb(109,133,163);
+    color: #ddd;
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#999999), to(#999999), color-stop(.6,#333333));
+    background-image: -moz-linear-gradient(#999999, #999999, #333333 60%);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#aaaaaa', endColorstr='#333333');
+}
+
+pre {
+    border: 1px solid black;
+    font-size: 10pt;
+    line-height: 1em;
+    padding: 1em;
+}
+
+input, textarea , select{
+    font-size: 16pt;
+    color: #666666;
+}
+
+a img {
+    border: 0;
+}
+
+form {
+    width: 100%;
+}
+
+.button {
+    font-size: 16pt;
+    text-align: center;
+    text-decoration: none;
+    padding: .2em .4em .2em .2em;
+	background: #dddddd;
+    color: #ffffff;
+    border: 1px groove #666666;
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#dddddd), to(#dddddd), color-stop(.6,#666666));
+    background-image: -moz-linear-gradient(#dddddd, #dddddd, #666666 60%);
+    -moz-border-radius: .2em;
+    -webkit-border-radius: .2em;
+    -khtml-border-radius: .2em;
+    -o-border-radius: .2em;
+    border-radius: .2em;
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#dddddd', endColorstr='#666666');
+}
+
+#backbutton {
+    margin-top: .4em;
+    float: left;
+}
+
+#main {
+    font-family: tahoma, arial, helvetica;
+    font-size: 12pt;
+    line-height: 1.5em;
+    padding: 1em;
+    margin: 1em 0 1em 0;
+    background:#fff;
+    border:.5em solid #888;
+    border-radius:1em;
+    -moz-border-radius:1em;
+    -webkit-border-radius:1em;
+}
+
+#main ul {
+    padding-left: 2em;
+}
+
+#main ol {
+    padding-left: 2em;
+}
+
+#main p {
+    margin-bottom: 1em;
+}
+
+#footer {
+    text-align: center;
+    font-size: 7pt;
+    padding: 2px;
+    margin: 5px 0 0 0;
+}
+
+#footer a {
+	text-decoration: none;
+}
+
+#error {
+	color: red;
+}
+
+.label {
+    font-size: 12pt;
+    padding: 3px 10px 0 10px;
+}
+
+.textbox {
+    padding: 0 10px 0 10px;
+}
+		
