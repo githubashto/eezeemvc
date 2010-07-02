@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block headtitle %}Eezee MVC - About{% endblock %}
+{% block title %}Eezee MVC - About{% endblock %}
+{% block backbutton %}<a href="/" id="backbutton" class="button">&lt;Back</a>{% endblock %}
+{% block content %}
+<div id="main">
+	<a href="http://code.google.com/p/eezeemvc/downloads/list">Download Eezee MVC</a> the sample application, which is also the source code of this site. Unpack it. Rename
+    the folder to your required name, and edit that application name in "app.yaml" to your required
+    name. Then Edit the sample application to suit your requirements.</p>
+    <p>If you are new to app engine, you need to read
+    <a href="http://code.google.com/appengine/docs/python/gettingstarted/">Getting Started: Python</a></p>
+    <p>Explanation of how it all works is
+    given below.</p>
+     <p>This site handles three pages, index page, about page, and contacts page.</p>
+      <p>First let us look at <b>main.py</b> in the root folder.
+<pre>
+from eezee_sys.controller import Controller
+
+from controllers import maincontroller
+from controllers import contactcontroller
+
+if __name__ == '__main__':
+    Controller.run()
+</pre>
+      <ol>
+        <li>First we import the "Controller" class (namespace) from eezee_sys.controller. This controller
+        class extends webapp.RequestHandler, and adds some routing, handling and rendering functions to
+        it, as we will see below.</li>
+        <li>Then we import the maincontroller and contactcontroller from the controllers folder.
+        The controllers in the controllers folder are the ones you have to write.</li>
+        <li>We call the static "run()" method of the Controller class, and away we go.</li>
+      </ol>
+      </p>
+
+      <p>Now let us look at <b>maincontroller.py</b> in the controllers folder.
+<pre>
+from eezee_sys.controller import Controller
+
+Controller.route(lambda:('/', IndexController))
+class IndexController(Controller):
+    def get(self):
+        self.doRender('index.html', {})
+
+Controller.route(lambda:('/about', AboutController))
+class AboutController(Controller):
+    def get(self):
+        self.doRender('about.html', {})
+</pre>
+      <ol>
+        <li>First we import the "Controller" class (namespace) from eezee_sys.controller.</li>
+        <li>Then we call the static "route()" method of the Controller class with the given
+        parameters. (If you don't know what a lambda function is, don't worry, thats for advanced
+        python programmers, just do the routing as shown). Here we route the "/" request to the
+        IndexController.</li>
+        <li>Then we define the class IndexController. As you can see it extends the Controller class,
+        which in turn extends the webapp.RequestHandler.</li>
+        <li>Next the get() method of the IndexController calls the "doRender()" instance method of the
+        Controller class. This method takes two parameter. Path to an "index.html" file. This file must reside
+        in the "views" folder and is actually a Django template. See the source's in views folder. It also extends the "base.html"
+        Django template. All pages in this project extends base.html. The second parameter is a dictionary which contains the
+        the template values to be passed to the Template. In this case there are no values, an empty dict is passed.
+        <li>The last block of code works pretty much the same way as above, for the "/about" request, in which
+        we define a AboutController. 
+      </ol>
+      </p>
+      <p>Here is the code for <b>contactcontroller.py</b>. I could have included this code in 
+      maincontroller.py. I have split it here as an example on how to split large controllers.
+<pre>
+from eezee_sys.controller import Controller
+from models.message import Message
+
+Controller.route(lambda:('/contact', ContactController))
+class ContactController(Controller):
+    def get(self):
+        self.doRender('contact.html', {})
+
+    @Controller.kwargs
+    def post(self, name, email, message):
+        message = Message(name=name, email=email, message=message)
+        message.put()
+        self.redirect("/")
+</pre>
+      <ol>
+        <li>First we import the "Controller" class (namespace) from eezee_sys.controller.</li>
+        <li>Next we import the "Message" class (namespace) from models.message.(See message.py in
+        models folder)</li>
+        <li>The get() method is called when the user requests "/contact" and we render
+        contact.html, which has the contact form.</li>
+        <li>The "@Controller.kwargs" line, takes the posted contact form fields, and converts them to
+        arguments with the same "name" in the post() method.</li>
+        <li>We then create a message object, suppling it with the posted values to initialize, and
+        we save the message entity by calling its put() method. And then we redirect back to the
+        index page.</li>
+      </ol>
+      </p>
+      <p><a href="http://code.google.com/p/eezeemvc/downloads/list">Download Eezee MVC Here</a></p>
+</div>	
+        
+{% endblock %}
+

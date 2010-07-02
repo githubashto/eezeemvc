@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block headtitle %}Eezee MVC - About{% endblock %}
+{% block title %}Eezee MVC - About{% endblock %}
+{% block backbutton %}<a href="/" id="backbutton" class="button">&lt;Back</a>{% endblock %}
+{% block content %}
+<div id="main">
+	<div id="error">Do not send any message. This is just an example!</div>
+    <form method="post" action="/contact">
+      <div class="label" >Your Name:</div>
+	  <div class="textbox"><input type="text" name="name" value="{{ name }}" style="width:100%"/></div>
+      <div class="label" >Your Email Address:</div>
+	  <div class="textbox"><input type="text" name="email" value="{{ email }}" style="width:100%"/></div>
+      <div class="label" >Your Message:</div>
+	  <div class="textbox"><textarea name="message" rows="5" style="width:100%"/>{{ message }}</textarea></div>
+      <div style="text-align:center;padding:5px"><a href="" class="button" onclick="document.forms[0].submit();return false">Send Message</a></div>
+	</form>  </div>
+</div>	
+        
+{% endblock %}
+
